@@ -62,7 +62,7 @@
 				if(window.location.pathname == '/' || window.location.pathname.startsWith("/page/")){
 
 
-					let urltofetch = (window.location.pathname == '/')?'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/':'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/'+window.location.pathname;
+					let urltofetch = (window.location.pathname == '/')?'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/':'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net'+window.location.pathname;
 					
 					fetch(urltofetch).then(function(response) {          
 					// When the page is loaded convert it to text          
@@ -116,7 +116,7 @@
 						console.log('Failed to fetch page: ', err);        
 					});			
 				}else{
-					fetch('https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/'+window.location.pathname+window.location.search).then(function(response) {          
+					fetch('https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net'+window.location.pathname+window.location.search).then(function(response) {          
 					// When the page is loaded convert it to text          
 						return response.text()      
 					}).then(function(html) {          
