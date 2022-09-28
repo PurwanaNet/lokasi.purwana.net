@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head itemscope itemtype="https://schema.org/WebSite">
+<meta name="description" content="LokasiKita menyediakan informasi dari semua lokasi di dunia dengan cepat dan akurat.." />
+<title>Informasi Tentang Semua Lokasi Di Dunia - LokasiKita</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+<!--	<script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>	
+	<script>
+
+		 (adsbygoogle = window.adsbygoogle || []).push({
+			  google_ad_client: "ca-pub-0170728254931540",
+			  enable_page_level_ads: true
+		 });
+
+	</script>-->
+
+<style>
+    body { background-color: #fff; color: #333; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 16px; -webkit-font-smoothing: antialiased; font-weight: 400; line-height: 2; margin: 0; overflow-x: hidden; }h1, h2, h3, h4, h5, h6 { color: #111; font-family: revert; font-weight: 700; line-height: 1.2; margin: 0; }.site-header>.wrap { padding: 20px 0; }.site-title a { text-decoration: none; color: black; font-weight: 500 }.site-inner { clear: both; padding-top: 10px; word-wrap: break-word; overflow: hidden; }.site-container { margin: 0 20px; }.site-inner, .wrap { margin: 0 auto; max-width: 1024px; }a { color: #1653BB; }.authority-grid .content, .full-width-content .content { width: 100%; }.screen-reader-shortcut, .screen-reader-text, .screen-reader-text span { border: 0; clip: rect(0, 0, 0, 0); height: 1px; overflow: hidden; position: absolute !important; width: 1px; word-wrap: normal !important; }article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { display: block; }article { margin-bottom: 50px; }.entry-title { font-size: 26px; }.entry-title a{ color: #1653BB }.sidebar .widget-title a { color: #111; text-decoration: none; }p { padding: 0; margin: 0; }.pagination { clear: both; margin: 35px 0 70px; }ol, ul { margin: 0; padding: 0; }.archive-pagination li { display: inline; }li { list-style-type: none; }.archive-pagination a:focus, .archive-pagination a:hover, .archive-pagination .active a { background-color: #333; color: #fff; }.archive-pagination a { color: #111; cursor: pointer; display: inline-block; font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; font-size: 1rem; font-weight: 600; padding: 2px 15px; text-decoration: none; }.site-footer { background-color: #fff; font-family: revert; font-size: 1rem; line-height: 1.5; letter-spacing: .08em; margin-top: 70px; padding: 35px 0; font-weight: 500; }.site-footer a { text-decoration: none; color: #111; }.avm {font-size: 12px;text-transform: uppercase;text-align: center;padding: 10px;}
+</style>
+<style>
+            @media(min-width:992px) {
+                .col_md_8 {
+                    width: 66.66666667%;
+                    float: left;
+                }
+
+                .col_md_4 {
+                    width: 33.33333333%;
+                    float: left;
+                }
+            }
+
+            .pl_type a {
+                color: #1653BB;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 1.5;
+            }
+
+            .pl_type {
+                padding: 0 15px;
+            }
+            .entry-header{
+                margin-bottom: 20px;
+            }
+            .avm {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+}
+        </style>
+	<script type="text/javascript">
+		
+		function onLoaded(){ 
+			//console.log('loaded');
+			console.log(window.location.pathname);
+
+			if(window.location.pathname != '/favicon.ico'){
+				if(window.location.pathname == '/' || window.location.pathname.startsWith("/page/")){
+
+
+					let urltofetch = (window.location.pathname == '/')?'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/':'https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/'+window.location.pathname;
+					
+					fetch(urltofetch).then(function(response) {          
+					// When the page is loaded convert it to text          
+						return response.text()      
+					}).then(function(html) {          
+						// Initialize the DOM parser          
+						var parser = new DOMParser();            
+						// Parse the text          
+						var doc = parser.parseFromString(html, "text/html");            
+
+						doc.querySelectorAll('img')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('.avm')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('.gcse-search')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('script')?.forEach((element)=>{
+							element.remove();
+						});
+						
+						doc.querySelectorAll('a')?.forEach((element)=>{
+							if(element.getAttribute("href")!=null){
+								element.setAttribute("href", element.getAttribute("href").replace("https://mapsus.net",""));
+							}
+						});
+						
+						doc.querySelectorAll('[id*="div-pw-"]')?.forEach((element)=>{
+							element.remove();
+						});
+						
+						doc.querySelectorAll('.adsbypubpower')?.forEach((element)=>{
+							element.parentElement.remove();
+						});
+						
+						
+						//doc.querySelector('#div-pw-1642405308')?.remove();
+						
+						if(window.location.pathname.startsWith("/page/")){
+							document.querySelector('title').innerHTML += ' '+window.location.pathname;
+						}
+						
+						document.querySelector('.site-container .site-inner').innerHTML = doc.querySelector('.site-container .site-inner').innerHTML;
+
+					}).catch(function(err) {            
+						console.log('Failed to fetch page: ', err);        
+					});			
+				}else{
+					fetch('https://api.codetabs.com/v1/proxy/?quest='+'https://mapsus.net/'+window.location.pathname+window.location.search).then(function(response) {          
+					// When the page is loaded convert it to text          
+						return response.text()      
+					}).then(function(html) {          
+						// Initialize the DOM parser          
+						var parser = new DOMParser();            
+						// Parse the text          
+						var doc = parser.parseFromString(html, "text/html");            
+
+						doc.querySelectorAll('img')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('.avm')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('.gcse-search')?.forEach((element)=>{
+							element.remove();
+						});	
+						
+						doc.querySelectorAll('script')?.forEach((element)=>{
+							element.remove();
+						});
+						
+						doc.querySelectorAll('a')?.forEach((element)=>{
+							if(element.getAttribute("href")!=null){
+								element.setAttribute("href", element.getAttribute("href").replace("https://mapsus.net",""));
+							}
+						});			
+						
+						doc.querySelectorAll('[id*="div-pw-"]')?.forEach((element)=>{
+							element.remove();
+						});		
+
+						doc.querySelectorAll('.adsbypubpower')?.forEach((element)=>{
+							element.parentElement.remove();
+						});						
+
+						//doc.querySelector('#div-pw-1642405308')?.remove();	
+						
+						doc.querySelectorAll('h2')?.forEach((element)=>{
+							if(element.innerHTML == 'Photos:'){
+								//element.innerHTML = 'Foto:';
+								doc.querySelector('.photos_point').remove();
+							}else if(element.innerHTML == 'About:'){
+								element.innerHTML = 'Tentang:';
+							};
+						});
+						
+						doc.querySelector('footer')?.remove();
+						
+
+						
+						let mytitle = doc.querySelector('title').innerHTML;
+						
+						//mytitle = (mytitle.replace('given name','nama pemberian')).replace('family name','nama keluarga');
+						
+						//document.head.innerHTML += '<title>'+mytitle+'</title>';  
+						document.querySelector('title').innerHTML = mytitle;
+						
+						document.head.innerHTML += '<meta name="keywords" content="'+doc.querySelector('meta[name="keywords"]')?.getAttribute("content")+'">';
+						if(doc.querySelector('meta[name="description"]')!=null){
+							document.querySelector('meta[name="description"]').setAttribute("content", doc.querySelector('meta[name="description"]')?.getAttribute("content"));
+						}else{
+							document.querySelector('meta[name="description"]').setAttribute("content", window.location.pathname);
+						}
+						if(doc.querySelectorAll('.site-container .site-inner').length <= 1){
+							document.querySelector('.site-container .site-inner').innerHTML = doc.querySelector('.site-container .site-inner').innerHTML;
+						}else{
+							document.querySelectorAll('.site-container .site-inner')[0].innerHTML = doc.querySelectorAll('.site-container .site-inner')[0].innerHTML;
+							document.querySelectorAll('.site-container .site-inner')[1].innerHTML = doc.querySelectorAll('.site-container .site-inner')[1].innerHTML;
+						}
+						
+						
+					}).catch(function(err) {            
+						console.log('Failed to fetch page: ', err);        
+					});
+				}
+			}
+		}
+		window.addEventListener('DOMContentLoaded', (event) => {
+			onLoaded();
+		});
+	</script>		
+</head>
+<body>
+<div class="site-container">
+<header class="site-header" itemscope="" itemtype="https://schema.org/WPHeader">
+<div class="wrap" style="border-bottom: 1px solid #E1E1E1;">
+<div class="title-area">
+<h2 class="site-title" itemprop="headline" style="font-size: 32px"><a href="/" data-wpel-link="internal">LokasiKita</a></h2>
+</div>
+<script async='async' src='https://cse.google.com/cse.js?cx=de60c7a725bd35c6b'></script>
+<div class='gcse-search'></div>
+</div>
+</header> <div class="site-inner" style="margin-top:25px">
+
+</div>
+<div class="site-inner"></div>
+
+<style>
+                .foot_box {
+                clear: both;
+                overflow: hidden;
+                text-align: center;
+                font-size: 15px;
+                border-top: 1px solid #ddd;
+                padding: 10px;
+            }
+
+</style>
+<footer>
+<div class="wrap foot_box" style="margin-top:25px">
+<strong>LokasiKita</strong>. proudly present by <a href="https://www.purwana.net">Purwana</a>&trade; services. Powered by <strong><em>Joss Friendster</em></strong> | Build with <a href="https://angga.purwana.net">Angga Purwana</a>
+</div>
+</footer>
+</div>
+</body>
+</html>
